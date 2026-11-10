@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# AWS and secrets: never commit these
+.aws/
+*.pem
+*.key
+.env
+credentials
