@@ -30,6 +30,8 @@ Building a model once is a proof of concept; production ML must be reliable, sec
 
 - Data lineage: A record of where data came from and how it was changed
 
+- Data lineage: A record of where data came from and how it was changed
+
 - Model registry: A catalog of model versions with approvals
 
 - Blue-green deployment: new and old versions run side by side; switch traffic, roll back instantly (Similar to Opening a new restaurant branch while the old one stays open)
@@ -45,6 +47,4 @@ Questions are scenarios about trade-offs between cost, performance, security, an
 ## The big idea: from experiment to production
 
 Think of a restaurant. Training a model in a notebook is like cooking a great dish once in your home kitchen. Production ML is running a restaurant: serving that dish to thousands of people every day, consistently, safely, within budget, and noticing when quality drops. The course (and the exam) is about the restaurant, not the home kitchen.
-
-
 
