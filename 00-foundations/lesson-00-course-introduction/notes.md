@@ -1,99 +1,49 @@
-# Lesson 1: Python Basics
+# Lesson 0: Course Introduction
 
 
 
-## Why Python matters on AWS
+## Course-to-exam map
 
-Python is the main language for ML on AWS. It's used in:
+- Course 1 → Domain 1: Data preparation for ML
 
-- \*\*SageMaker AI training scripts\*\*: the code that trains models
+- Course 2 → Domain 2: ML model development
 
-- \*\*AWS Lambda functions\*\*: small pieces of code AWS runs on demand
+- Course 3 → Domain 3: Deployment and orchestration
 
-- \*\*AWS Glue jobs\*\*: data-processing jobs
-
-- \*\*Boto3\*\*: Python's toolkit for controlling AWS services
+- Course 4 → Domain 4: Monitoring, maintenance, and security
 
 
 
-## Core ideas
+## Key idea
 
-| On AWS | Lists of files, instances, records | JSON-style API requests and responses |
-
-
+Building a model once is a proof of concept; production ML must be reliable, secure, monitored, and cost-efficient.
 
 
 
-### Classes (OOP)
+## Vocabulary
 
-- A class is a blueprint; an object is something built from it.
+- MLOps: Applying DevOps habits (automation, testing, versioning) to ML
 
-- ML libraries follow the \*\*fit / predict\*\* pattern: `fit` learns from data, `predict` uses what was learned.
+- Model drift: accuracy decays as real-world data changes
 
-- `fit` ends with `return self`, so calls can be chained: `Model().fit(data).predict(x)`.
+- Feature store: A shared, versioned library of ready-to-use input variables
 
-- scikit-learn, PyTorch, and the SageMaker Python SDK (`fit`, `deploy`, `predict`) all use this style.
+- Data lineage: A record of where data came from and how it was changed
 
+- Model registry: A catalog of model versions with approvals
 
+- Blue-green deployment: new and old versions run side by side; switch traffic, roll back instantly (Similar to Opening a new restaurant branch while the old one stays open)
 
-### Error handling
-
-- `try`: code that might fail. `except`: handles specific errors. `finally`: always runs.
-
-- Put specific exceptions before the general `Exception`.
-
-- Failed Boto3 calls (missing permissions, throttling) raise `botocore.exceptions.ClientError`.
+- SLA: promised performance level (e.g., “responds within 200 ms”) short for Service Level Agreement (SLA)
 
 
 
-### File I/O
+## AWS Exam mindset
 
-- `with open(...) as file:` closes the file automatically, even after errors (a context manager).
+Questions are scenarios about trade-offs between cost, performance, security, and reliability.
 
-- Modes: `'r'` read, `'w'` write (\*\*erases existing content\*\*), `'a'` append.
+## The big idea: from experiment to production
 
-- On AWS, data usually lives in S3, not local disk. Pandas can read `s3://` paths (needs `s3fs`), and Boto3 can upload and download objects.
-
-
-
-## Exam angle
-
-The exam doesn't test Python syntax. It tests the tools you use Python with:
+Think of a restaurant. Training a model in a notebook is like cooking a great dish once in your home kitchen. Production ML is running a restaurant: serving that dish to thousands of people every day, consistently, safely, within budget, and noticing when quality drops. The course (and the exam) is about the restaurant, not the home kitchen.
 
 
-
-| Tool | What it is | Use it when |
-
-|---|---|---|
-
-| Console | AWS website, point and click | Learning, exploring, one-off tasks |
-
-| AWS CLI | Typed commands in a terminal | Quick scripts, automation |
-
-| Boto3 | Python library covering most AWS services | Programmatic control from Python |
-
-| SageMaker Python SDK | Higher-level library focused on SageMaker | Training, deploying, managing models |
-
-
-
-- Expect scenarios about deploying and hosting models programmatically (SDK, Boto3, or CLI).
-
-- Modular, reusable code is a tested software engineering best practice.
-
-
-
-## Lab: threshold\_pipeline.py
-
-Built a small ML-style program using a class (`SimpleThresholdModel` with fit and predict), file reading and writing, and try/except/finally.
-
-- Learned threshold from the training data
-
-- Wrote predictions to `results.txt`
-
-- Broke it on purpose (moved the data file) to trigger `FileNotFoundError`; `finally` still ran.
-
-
-
-## My notes and questions
-
-N/A for now.. Thank you for following along if you are here :)
